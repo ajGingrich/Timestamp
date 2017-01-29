@@ -3,6 +3,8 @@ var path = require('path');
 
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 //configure app
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -75,6 +77,6 @@ app.get('/:id', function (req, res) {
 
 });
 
-app.listen(3000, function () {
-    console.log('okie')
+app.listen(app.get('port'), function() {
+    console.log("Node app is running at localhost:" + app.get('port'))
 });
